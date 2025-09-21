@@ -49,6 +49,46 @@ pair<size_t, size_t> Algorithms::longestPalindromicSubstring(const string& text)
     return {bestStart + 1, bestStart + bestLen};
 }
 
+pair<size_t, size_t> Algorithms::longestCommonSubstring(const string& text1, const string& text2) {
+    if (text1.empty() || text2.empty()) {
+        return {0, 0};
+    }
+
+    const size_t n = text1.size();
+    const size_t m = text2.size();
+
+    vector<int> prev(m + 1, 0);
+    vector<int> curr(m + 1, 0);
+
+    size_t bestLen = 0;
+    size_t bestStart = 0;
+
+    for (size_t i = 1; i <= n; ++i) {
+        for (size_t j = 1; j <= m; ++j) {
+            if (text1[i - 1] == text2[j - 1]) {
+                curr[j] = prev[j - 1] + 1;
+                size_t currentLen = static_cast<size_t>(curr[j]);
+                size_t currentStart = i - currentLen;
+
+                if (currentLen > bestLen || (currentLen == bestLen && currentStart < bestStart)) {
+                    bestLen = currentLen;
+                    bestStart = currentStart;
+                }
+            } else {
+                curr[j] = 0;
+            }
+        }
+        std::swap(prev, curr);
+        std::fill(curr.begin(), curr.end(), 0);
+    }
+
+    if (bestLen == 0) {
+        return {0, 0};
+    }
+
+    return {bestStart + 1, bestStart + bestLen};
+}
+
 void Algorithms::manacher(const string& s, vector<int>& d1, vector<int>& d2) {
     const int n = static_cast<int>(s.size());
 
