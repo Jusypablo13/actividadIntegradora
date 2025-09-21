@@ -22,8 +22,12 @@ int main() {
 
     for (const auto& transmission : transmissions) {
         auto palindrome = Algorithms::longestPalindromicSubstring(transmission);
-        cout << "El palíndromo más largo encontrado es: \"" << palindrome.first 
-             << "\" y comienza en la posición: " << palindrome.second << endl;
+        cout << palindrome.first << " " << palindrome.second << endl;
+    }
+
+    if (transmissions.size() == 2) {
+        auto common = Algorithms::longestCommonSubstring(transmissions[0], transmissions[1]);
+        cout << common.first << " " << common.second << endl;
     }
 
     return 0;
