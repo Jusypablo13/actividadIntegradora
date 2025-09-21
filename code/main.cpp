@@ -7,11 +7,11 @@ using namespace std;
 
 int main() {
     try {
-        string T1 = FileReader::readFile("transmission1.txt");
-        string T2 = FileReader::readFile("transmission2.txt");
-        string M1 = FileReader::readFile("mcode1.txt");
-        string M2 = FileReader::readFile("mcode2.txt");
-        string M3 = FileReader::readFile("mcode3.txt");
+        string T1 = FileReader::readFile("code/transmission1.txt");
+        string T2 = FileReader::readFile("code/transmission2.txt");
+        string M1 = FileReader::readFile("code/mcode1.txt");
+        string M2 = FileReader::readFile("code/mcode2.txt");
+        string M3 = FileReader::readFile("code/mcode3.txt");
 
         //busqueda de codigo malicioso
         cout << "\n=== Analyzing Transmission 1 ===\n";
